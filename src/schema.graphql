@@ -1,5 +1,6 @@
 type Query {
   profile(id: ID!): Profile
+  activitySchedules: [ActivitySchedule!]
   me: User
 }
 
@@ -7,6 +8,7 @@ type Mutation {
   signup(username: String!, password: String!, name: String!): AuthPayload!
   login(username: String!, password: String!): AuthPayload!
   createProfile(title: String!, content: String!): Profile!
+  addActivitySchedule(activityId: String!, start: String!, end: String!): ActivitySchedule!
   #publish(id: ID!): Post!
   #deletePost(id: ID!): Post!
 }
@@ -31,4 +33,16 @@ type Profile {
   email: String
   firstName: String!
   lastName: String!
+}
+
+type ActivityType {
+  id: ID!
+  name: String!
+}
+
+type ActivitySchedule {
+  id: ID!
+  start: String!
+  end: String!
+  activity: ActivityType!
 }
