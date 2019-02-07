@@ -14,7 +14,4 @@ EXPOSE 4000
 
 ENTRYPOINT ["yarn"]
 
-CMD ["start"]
-
-
-
+CMD ["start:prod"]
