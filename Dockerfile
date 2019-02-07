@@ -4,19 +4,17 @@ WORKDIR /app
 
 COPY package.json yarn.lock ./
 
-RUN yarn install --frozen-lockfile --production
+RUN yarn install --frozen-lockfile
 
 VOLUME /app/node_modules
 
 COPY . .
 
-RUN yarn build
-
 EXPOSE 4000
 
-ENTRYPOINT ["node"]
+ENTRYPOINT ["yarn"]
 
-CMD ["./dist/index.js"]
+CMD ["start"]
 
 
 
