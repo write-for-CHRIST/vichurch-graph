@@ -10,11 +10,13 @@ VOLUME /app/node_modules
 
 COPY . .
 
+RUN yarn build
+
 EXPOSE 4000
 
-ENTRYPOINT ["yarn"]
+ENTRYPOINT ["node"]
 
-CMD ["start"]
+CMD ["./dist/index.js"]
 
 
 
