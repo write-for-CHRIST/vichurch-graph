@@ -8,10 +8,14 @@ export const activitySchedule = {
     info,
   ) {
     const userId = getUserId(ctx);
-    return ctx.prisma.createActivitySchedule({
-      activity: {connect: {id: activityTypeId}},
-      start,
-      end,
-    });
+    if (userId) {
+      return ctx.prisma.createActivitySchedule({
+        activity: {connect: {id: activityTypeId}},
+        start,
+        end,
+      });
+    } else {
+      throw new Error('Not authorized user!');
+    }
   },
 };
