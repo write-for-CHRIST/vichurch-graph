@@ -4,10 +4,11 @@
     "start": "dotenv -- nodemon -e ts,graphql -x ts-node src/index.ts",
     "debug": "dotenv -- nodemon -e ts,graphql -x ts-node --inspect src/index.ts",
     "build": "tsc",
-		"start:prod": "ts-node src/index.ts"
+    "start:prod": "ts-node src/index.ts"
   },
   "dependencies": {
     "@write-for-christ/vichurch-model": "0.7.0",
+    "bara": "2.4.0",
     "bcryptjs": "2.4.3",
     "graphql-yoga": "1.17.4",
     "jsonwebtoken": "8.4.0"
