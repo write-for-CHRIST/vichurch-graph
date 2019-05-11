@@ -18,7 +18,7 @@ module.exports = {
           {
             loader: 'ts-loader',
             options: {
-              configFile: 'tsconfig.json'
+              configFile: 'tsconfig.json',
             },
           },
         ],
@@ -32,7 +32,5 @@ module.exports = {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ]
+  plugins: [new webpack.HotModuleReplacementPlugin()],
 }
