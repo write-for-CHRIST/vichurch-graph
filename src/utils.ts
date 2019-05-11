@@ -1,5 +1,5 @@
 import * as jwt from 'jsonwebtoken'
-import { Prisma } from '@write-for-christ/vichurch-model'
+import { Prisma } from '@vichurch/model'
 
 export interface Context {
   prisma: Prisma
