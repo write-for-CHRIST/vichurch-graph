@@ -1,4 +1,4 @@
-import { getUserId, Context } from '../utils'
+import { getUserId, Context } from '../../utils'
 
 export const Query = {
   profile(parent, { id }, ctx: Context) {
