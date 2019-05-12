@@ -1,48 +1,68 @@
 type Query {
-  profile(id: ID!): Profile
-  activitySchedules: [ActivitySchedule!]
-  me: User
+	translation(id: ID!): Translation!
+	localization(id: ID!): Localization!
+	profile(id: ID!): Profile
+	activitySchedules: [ActivitySchedule!]
+    localizations: [Localization!]
+	me: User
+	getLocalizationsByLang(lang: String!): [Localization!]!
 }
 
 type Mutation {
-  signup(username: String!, password: String!, name: String!): AuthPayload!
-  login(username: String!, password: String!): AuthPayload!
-  createProfile(title: String!, content: String!): Profile!
-  addActivitySchedule(activityId: String!, start: String!, end: String!): ActivitySchedule!
-  #publish(id: ID!): Post!
-  #deletePost(id: ID!): Post!
+	signup(username: String!, password: String!, name: String!): AuthPayload!
+	login(username: String!, password: String!): AuthPayload!
+	createProfile(title: String!, content: String!): Profile!
+	addActivitySchedule(activityId: String!, start: String!, end: String!): ActivitySchedule!
 }
 
 type Subscription {
-  profileSubscription: Profile
+	profileSubscription: Profile
 }
 
 type AuthPayload {
-  token: String!
-  user: User!
+	token: String!
+	user: User!
 }
 
 type User {
-  id: ID!
-  username: String!
-  profile: Profile
+	id: ID!
+	username: String!
+	profile: Profile
 }
 
 type Profile {
-  id: ID!
-  email: String
-  firstName: String!
-  lastName: String!
+	id: ID!
+	email: String
+	firstName: String!
+	lastName: String!
 }
 
 type ActivityType {
-  id: ID!
-  name: String!
+	id: ID!
+	name: String!
 }
 
 type ActivitySchedule {
-  id: ID!
-  start: String!
-  end: String!
-  activity: ActivityType!
+	id: ID!
+	start: String!
+	end: String!
+	activity: ActivityType!
+}
+
+enum LanguageCode {
+	VI
+	EN
+}
+
+type Translation {
+	id: ID!
+	lang: LanguageCode!
+	text: String!
+	localization: Localization!
+}
+
+type Localization {
+	id: ID!
+	key: String!
+	translations: [Translation!]!
 }

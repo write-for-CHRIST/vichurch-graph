@@ -1,6 +1,6 @@
-import { Context } from '../utils'
+import { Context } from '../../utils'
 
-export const Subscription = {
+export const Profile = {
   profileSubscription: {
     subscribe: async (parent, args, ctx: Context) => {
       return ctx.prisma.$subscribe
