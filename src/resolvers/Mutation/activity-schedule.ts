@@ -14,6 +14,6 @@ export async function addActivitySchedule(
       end,
     })
   } else {
-    throw new Error('Not authorized user!')
+    throw new Error('Not authorize, user!')
   }
 }
