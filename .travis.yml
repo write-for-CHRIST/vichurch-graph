@@ -1,0 +1,40 @@
+language: node_js
+
+services: docker
+
+node_js: "11"
+
+branches:
+  only:
+    - master
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+
+notifications:
+  email: false
+
+stages:
+  - compile
+  - name: deploy
+    if: branch = master AND type = push
+  - name: release
+    if: branch = master AND type = push
+
+jobs:
+  include:
+    - stage: compile
+      script: "yarn build"
+    - stage: deploy
+      script:
+				- |
+          docker run --rm \ 
+						-v $(PWD):/app \
+						-e DOKKU_ENDPOINT=$DOKKU_ENDPOINT -e SSH_PRIVATE_KEY=$SSH_PRIVATE_KEY \
+						nampdn/puskerit \
+						/bin/bash -c "cd /app && puskerit ${DOKKU_ENDPOINT}"
+    - stage: release
+      script:
+          - yarn build
