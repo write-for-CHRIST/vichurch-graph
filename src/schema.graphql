@@ -5,7 +5,7 @@ type Query {
 	activitySchedules: [ActivitySchedule!]
     localizations: [Localization!]
 	me: User
-	getLocalizationsByLang(lang: String!): [Localization!]!
+	labels(code: String!): [Label!]!
 }
 
 type Mutation {
@@ -17,6 +17,11 @@ type Mutation {
 
 type Subscription {
 	profileSubscription: Profile
+}
+
+type Label {
+    key: String!
+    text: String!
 }
 
 type AuthPayload {

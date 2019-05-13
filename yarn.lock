@@ -190,10 +190,10 @@
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.5.4.tgz#b863a4191e525206819e008097ebf0fb2e3a1cdc"
 
-"@vichurch/model@1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@vichurch/model/-/model-1.1.1.tgz#004c0c52adec1115f76fb9fbf704a1f4faea4cca"
-  integrity sha512-7igPPXLJTavbGMozJsM3iaT5O+dvUO70UK5aczvqWLbcVPpl9ZHMG+D09t5XScNb7JzKC021MK1I3lKbAxlATg==
+"@vichurch/model@1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@vichurch/model/-/model-1.1.2.tgz#835a602c02e4fe17837baeca7663cd7d5b450a33"
+  integrity sha512-gd571cir/qZkU0pkLIzf1XJncYomsjtdIHx7yv64hbLloOXyaEYE+vZQUHRli3xGlu0LgUmciY5BK+8VgQRNag==
   dependencies:
     graphql "14.1.1"
     prisma-client-lib "1.26.3"

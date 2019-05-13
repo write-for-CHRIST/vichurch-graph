@@ -1,17 +1,36 @@
 import { Context } from '../../utils'
 
-export async function getLocalizationsByLang(
+export interface Label {
+  key: string
+  text: string
+}
+
+export async function labels(
   parent,
-  { lang },
+  { code },
   ctx: Context,
-  info,
-) {
-  console.log('Fetch localization for lang', lang)
-  const map = new Map()
-  const localizations = await ctx.prisma.localizations()
-  for (let l of localizations) {
-    const key = l.key
-    console.log(key)
-  }
-  return localizations
+): Promise<Array<Label>> {
+  const query = `
+    query labels($code: String) {
+      translations(where: {language: {code: $code}}) {
+      language {
+        name
+      }
+      localization {
+        key
+      }
+      text
+    }
+    }
+  `
+  const res = await ctx.prisma.$graphql(query, { code })
+  const labels = res.translations.map((r: any) => ({
+    key: r.localization.key,
+    text: r.text,
+  }))
+  return labels
+}
+
+export async function localizations(parent, args, ctx: Context) {
+  return ctx.prisma.localizations()
 }

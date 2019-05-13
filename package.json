@@ -10,7 +10,7 @@
     "lint": "tslint -p ."
   },
   "dependencies": {
-    "@vichurch/model": "1.1.1",
+    "@vichurch/model": "1.1.2",
     "bara": "2.4.0",
     "bcryptjs": "2.4.3",
     "graphql-yoga": "1.17.4",
