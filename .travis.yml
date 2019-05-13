@@ -29,12 +29,7 @@ jobs:
       script: "yarn build"
     - stage: deploy
       script:
-	- |
-          docker run --rm \
-	  	-v $(PWD):/app \
-		-e DOKKU_ENDPOINT=$DOKKU_ENDPOINT -e SSH_PRIVATE_KEY=$SSH_PRIVATE_KEY \
-		nampdn/puskerit \
-		/bin/bash -c "cd /app && puskerit ${DOKKU_ENDPOINT}"
+          - docker run --rm -v $(PWD):/app -e DOKKU_ENDPOINT=$DOKKU_ENDPOINT -e SSH_PRIVATE_KEY=$SSH_PRIVATE_KEY nampdn/puskerit /bin/bash -c "cd /app && puskerit ${DOKKU_ENDPOINT}"
     - stage: release
       script:
           - yarn build
